@@ -112,3 +112,4 @@ fabric.properties
 poetry.toml
 .ruff_cache/
 pyrightconfig.json
+*.idea
