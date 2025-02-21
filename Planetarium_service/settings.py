@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     "drf_spectacular",
-    "src.planetarium"
+    "planetarium",
+    "user"
 ]
 
 MIDDLEWARE = [
@@ -56,7 +57,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "Planetarium.urls"
+ROOT_URLCONF = "Planetarium_service.urls"
 
 TEMPLATES = [
     {
@@ -75,7 +76,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "Planetarium.wsgi.application"
+WSGI_APPLICATION = "Planetarium_service.wsgi.application"
 
 
 # Database
@@ -143,9 +144,6 @@ INTERNAL_IPS = [
    ]
 
 REST_FRAMEWORK = {
-    "DEFAULT_PERMISSION_CLASSES": [
-        "app.permissions.IsAdminAllOrIsAuthenticatedOrReadOnly",
-    ],
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ],
@@ -161,7 +159,7 @@ REST_FRAMEWORK = {
 }
 
 SPECTACULAR_SETTINGS = {
-    "TITLE": "Planetarium API",
+    "TITLE": "Planetarium_service API",
     "DESCRIPTION": "Order tickets for your space trips",
     "VERSION": "1.0.0",
     "SERVE_INCLUDE_SCHEMA": False,

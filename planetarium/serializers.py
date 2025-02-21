@@ -1,6 +1,6 @@
 from rest_framework import serializers
 # from django.contrib.auth.models import User
-from src.planetarium.models import (
+from planetarium.models import (
     AstronomyShow,
     ShowTheme,
     PlanetariumDome,
