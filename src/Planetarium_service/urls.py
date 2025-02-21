@@ -45,7 +45,12 @@ urlpatterns = [
             namespace="planetarium"
         )
     ),
-    # path("api/user/", include("user.urls", namespace="user")),
+    path(
+        "api/user/",
+        include(
+            "user.urls",
+            namespace="user")
+    ),
     path(
         "__debug__/",
         include(
