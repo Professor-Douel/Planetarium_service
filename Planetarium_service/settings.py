@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
+import os
 from datetime import timedelta
 from pathlib import Path
 
@@ -41,7 +42,8 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     "drf_spectacular",
-    "planetarium"
+    "planetarium",
+    "user"
 ]
 
 MIDDLEWARE = [
@@ -55,7 +57,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "Planetarium.urls"
+ROOT_URLCONF = "Planetarium_service.urls"
 
 TEMPLATES = [
     {
@@ -74,7 +76,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "Planetarium.wsgi.application"
+WSGI_APPLICATION = "Planetarium_service.wsgi.application"
 
 
 # Database
@@ -82,8 +84,12 @@ WSGI_APPLICATION = "Planetarium.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.environ["POSTGRES_DB"],
+        "USER": os.environ["POSTGRES_USER"],
+        "PASSWORD": os.environ["POSTGRES_PASSWORD"],
+        "HOST": os.environ["POSTGRES_HOST"],
+        "PORT": os.environ["POSTGRES_PORT"],
     }
 }
 
@@ -138,9 +144,6 @@ INTERNAL_IPS = [
    ]
 
 REST_FRAMEWORK = {
-    "DEFAULT_PERMISSION_CLASSES": [
-        "app.permissions.IsAdminAllOrIsAuthenticatedOrReadOnly",
-    ],
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ],
@@ -156,7 +159,7 @@ REST_FRAMEWORK = {
 }
 
 SPECTACULAR_SETTINGS = {
-    "TITLE": "Planetarium API",
+    "TITLE": "Planetarium_service API",
     "DESCRIPTION": "Order tickets for your space trips",
     "VERSION": "1.0.0",
     "SERVE_INCLUDE_SCHEMA": False,

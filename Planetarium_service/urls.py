@@ -39,13 +39,18 @@ urlpatterns = [
        admin.site.urls
    ),
     path(
-        "api/app/",
+        "api/planetarium/",
         include(
             "planetarium.urls",
             namespace="planetarium"
         )
     ),
-    # path("api/user/", include("user.urls", namespace="user")),
+    # # path(
+    # #     "api/user/",
+    # #     include(
+    # #         "user.urls",
+    # #         namespace="user")
+    # ),
     path(
         "__debug__/",
         include(

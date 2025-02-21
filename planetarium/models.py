@@ -4,7 +4,8 @@ from django.contrib.auth.models import User
 
 class AstronomyShow(models.Model):
     title = models.CharField(
-        max_length=255
+        max_length=255,
+        null=True,
     )
     description = models.TextField()
 
