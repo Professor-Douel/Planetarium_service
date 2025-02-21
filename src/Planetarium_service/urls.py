@@ -41,14 +41,14 @@ urlpatterns = [
     path(
         "api/app/",
         include(
-            "planetarium.urls",
+            "src.planetarium.urls",
             namespace="planetarium"
         )
     ),
     path(
         "api/user/",
         include(
-            "user.urls",
+            "src.user.urls",
             namespace="user")
     ),
     path(

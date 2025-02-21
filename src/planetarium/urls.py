@@ -5,7 +5,7 @@ from django.urls import (
 
 from rest_framework.routers import DefaultRouter
 
-from planetarium.views import (
+from src.planetarium.views import (
     AstronomyShowViewSet,
     ShowThemeViewSet,
     PlanetariumDomeViewSet,
