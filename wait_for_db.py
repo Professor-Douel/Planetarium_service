@@ -9,7 +9,7 @@ from django.db.utils import OperationalError
 
 os.environ.setdefault(
     "DJANGO_SETTINGS_MODULE",
-    "cinema_service.settings"
+    "Planetarium_service.settings"
 )
 django.setup()
 
