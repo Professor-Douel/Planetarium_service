@@ -13,7 +13,12 @@ from planetarium.models import (
 class AstronomyShowSerializer(serializers.ModelSerializer):
     class Meta:
         model = AstronomyShow
-        fields = '__all__'
+        fields = (
+            "id",
+            "title",
+            "description",
+            "image"
+        )
 
 
 class ShowThemeSerializer(serializers.ModelSerializer):
@@ -25,13 +30,23 @@ class ShowThemeSerializer(serializers.ModelSerializer):
 class PlanetariumDomeSerializer(serializers.ModelSerializer):
     class Meta:
         model = PlanetariumDome
-        fields = '__all__'
+        fields = (
+            "id",
+            "name",
+            "rows",
+            "seats_in_row"
+        )
 
 
 class ShowSessionSerializer(serializers.ModelSerializer):
     class Meta:
         model = ShowSession
-        fields = '__all__'
+        fields = (
+            "id",
+            "astronomy_show",
+            "planetarium_dome",
+            "show_time"
+        )
 
 
 class ReservationSerializer(serializers.ModelSerializer):
@@ -39,10 +54,20 @@ class ReservationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Reservation
-        fields = '__all__'
+        fields = (
+            "id",
+            "user",
+            "created_at",
+            "tickets"
+        )
 
 
 class TicketSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ticket
-        fields = '__all__'
+        fields = (
+            "id",
+            "row",
+            "seat",
+            "show_session"
+        )
