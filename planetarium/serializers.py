@@ -1,5 +1,5 @@
+from django.db import transaction
 from rest_framework import serializers
-# from django.contrib.auth.models import User
 from planetarium.models import (
     AstronomyShow,
     ShowTheme,
@@ -13,7 +13,12 @@ from planetarium.models import (
 class AstronomyShowSerializer(serializers.ModelSerializer):
     class Meta:
         model = AstronomyShow
-        fields = '__all__'
+        fields = (
+            "id",
+            "title",
+            "description",
+            "image"
+        )
 
 
 class ShowThemeSerializer(serializers.ModelSerializer):
@@ -25,24 +30,51 @@ class ShowThemeSerializer(serializers.ModelSerializer):
 class PlanetariumDomeSerializer(serializers.ModelSerializer):
     class Meta:
         model = PlanetariumDome
-        fields = '__all__'
+        fields = (
+            "id",
+            "name",
+            "rows",
+            "seats_in_row"
+        )
 
 
 class ShowSessionSerializer(serializers.ModelSerializer):
     class Meta:
         model = ShowSession
-        fields = '__all__'
-
-
-class ReservationSerializer(serializers.ModelSerializer):
-    user = serializers.StringRelatedField()
-
-    class Meta:
-        model = Reservation
-        fields = '__all__'
+        fields = (
+            "id",
+            "astronomy_show",
+            "planetarium_dome",
+            "show_time"
+        )
 
 
 class TicketSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ticket
-        fields = '__all__'
+        fields = (
+            "id",
+            "row",
+            "seat",
+            "show_session"
+        )
+
+
+class ReservationSerializer(serializers.ModelSerializer):
+    tickets = TicketSerializer(many=True, read_only=False, allow_empty=False)
+
+    class Meta:
+        model = Reservation
+        fields = (
+            "id",
+            "created_at",
+            "tickets"
+        )
+
+    def create(self, validated_data):
+        with transaction.atomic():
+            tickets_data = validated_data.pop("tickets")
+            reservation = Reservation.objects.create(**validated_data)
+            for ticket_data in tickets_data:
+                Ticket.objects.create(**ticket_data)
+            return reservation
