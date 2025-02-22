@@ -96,6 +96,12 @@ class ReservationViewSet(BaseViewSet):
         "created_at"
     ]
 
+    def get_queryset(self):
+        return self.queryset.filter(user=self.request.user)
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
 
 class TicketViewSet(BaseViewSet):
     queryset = Ticket.objects.select_related(
