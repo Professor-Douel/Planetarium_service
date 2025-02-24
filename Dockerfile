@@ -3,12 +3,14 @@ LABEL maintainer="imtence@gmail.com"
 
 ENV PYTHONUNBUFFERED=1
 
-WORKDIR app/requirements
+RUN apk update && apk add --no-cache gcc libc-dev musl-dev
+
+WORKDIR /app/requirements
 
 COPY requirements.txt requirements.txt
 
 RUN pip install -r requirements.txt
 
-WORKDIR app/
+WORKDIR /app
 
 COPY . .
