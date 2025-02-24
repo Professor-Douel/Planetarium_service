@@ -1,7 +1,7 @@
 from rest_framework import (
     viewsets,
     filters,
-    permissions
+    permissions, serializers
 )
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
@@ -10,8 +10,7 @@ from .models import (
     ShowTheme,
     PlanetariumDome,
     ShowSession,
-    Reservation,
-    Ticket
+    Reservation
 )
 
 from .serializers import (
@@ -19,8 +18,7 @@ from .serializers import (
     ShowThemeSerializer,
     PlanetariumDomeSerializer,
     ShowSessionSerializer,
-    ReservationSerializer,
-    TicketSerializer,
+    ReservationSerializer
 )
 
 
@@ -97,25 +95,8 @@ class ReservationViewSet(BaseViewSet):
     ]
 
     def get_queryset(self):
-        return self.queryset.filter(user=self.request.user)
+        queryset = self.queryset.filter(user=self.request.user)
+        return queryset
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
-
-
-class TicketViewSet(BaseViewSet):
-    queryset = Ticket.objects.select_related(
-        "show_session",
-        "reservation"
-    ).all()
-    serializer_class = TicketSerializer
-    search_fields = [
-        "show_session__astronomy_show__title",
-        "row",
-        "seat"
-    ]
-    ordering_fields = [
-        "id",
-        "row",
-        "seat"
-    ]
