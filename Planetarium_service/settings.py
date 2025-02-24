@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     "drf_spectacular",
+    "django_extensions",
     "planetarium",
     "user"
 ]
@@ -172,7 +173,7 @@ SPECTACULAR_SETTINGS = {
 }
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=120),
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=1),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=3),
     "ROTATE_REFRESH_TOKENS": False,
 }
