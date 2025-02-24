@@ -25,8 +25,8 @@ def wait_for_db():
             print("Database is available!")
             break
         except OperationalError:
-            print("Database is not ready, wait 2 seconds...")
-            time.sleep(2)
+            print("Database is not ready, wait 5 seconds...")
+            time.sleep(5)
 
 
 if __name__ == "__main__":

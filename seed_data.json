@@ -1,0 +1,532 @@
+[
+  {
+    "model": "planetarium.astronomyshow",
+    "pk": 1,
+    "fields": {
+      "title": "Stars and Galaxies",
+      "description": "A deep dive into the cosmos, exploring stars, galaxies, and the mysteries of space.",
+      "image": "upload/astronomy_shows/stars-and-galaxies-uuid.jpg"
+    }
+  },
+  {
+    "model": "planetarium.astronomyshow",
+    "pk": 2,
+    "fields": {
+      "title": "The Wonders of the Solar System",
+      "description": "An exploration of our solar system, featuring the planets, moons, and other celestial bodies.",
+      "image": "upload/astronomy_shows/wonders-of-solar-system.jpg"
+    }
+  },
+  {
+    "model": "planetarium.astronomyshow",
+    "pk": 3,
+    "fields": {
+      "title": "Black Holes and Beyond",
+      "description": "A journey into the unknown, discovering the nature of black holes and their role in the universe.",
+      "image": "upload/astronomy_shows/black-holes-and-beyond.jpg"
+    }
+  },
+  {
+    "model": "planetarium.astronomyshow",
+    "pk": 4,
+    "fields": {
+      "title": "Exoplanets Exploration",
+      "description": "Investigating distant worlds beyond our solar system and the possibility of life on exoplanets.",
+      "image": "upload/astronomy_shows/exoplanets-exploration.jpg"
+    }
+  },
+  {
+    "model": "planetarium.astronomyshow",
+    "pk": 5,
+    "fields": {
+      "title": "The Big Bang Theory",
+      "description": "An in-depth look at the origin of the universe and the events following the Big Bang.",
+      "image": "upload/astronomy_shows/big-bang-theory.jpg"
+    }
+  },
+  {
+    "model": "planetarium.astronomyshow",
+    "pk": 6,
+    "fields": {
+      "title": "The Life of Stars",
+      "description": "Tracking the life cycle of stars, from their birth in nebulae to their explosive deaths as supernovae.",
+      "image": "upload/astronomy_shows/life-of-stars.jpg"
+    }
+  },
+  {
+    "model": "planetarium.astronomyshow",
+    "pk": 7,
+    "fields": {
+      "title": "The Search for Extraterrestrial Life",
+      "description": "Exploring the ongoing search for life beyond Earth, including the search for alien signals.",
+      "image": "upload/astronomy_shows/search-for-extraterrestrial-life.jpg"
+    }
+  },
+  {
+    "model": "planetarium.astronomyshow",
+    "pk": 8,
+    "fields": {
+      "title": "Cosmic Collisions",
+      "description": "A look at the powerful forces of cosmic collisions, from asteroid impacts to galactic mergers.",
+      "image": "upload/astronomy_shows/cosmic-collisions.jpg"
+    }
+  },
+  {
+    "model": "planetarium.astronomyshow",
+    "pk": 9,
+    "fields": {
+      "title": "The Expanding Universe",
+      "description": "Examining the evidence for an ever-expanding universe and the implications for the future.",
+      "image": "upload/astronomy_shows/expanding-universe.jpg"
+    }
+  },
+  {
+    "model": "planetarium.astronomyshow",
+    "pk": 10,
+    "fields": {
+      "title": "The Dark Matter Mystery",
+      "description": "Exploring the elusive nature of dark matter and its critical role in the structure of the universe.",
+      "image": "upload/astronomy_shows/dark-matter-mystery.jpg"
+    }
+  },
+  {
+    "model": "planetarium.showtheme",
+    "pk": 1,
+    "fields": {
+      "name": "Galactic Wonders",
+      "astronomy_shows": [1]
+    }
+  },
+  {
+    "model": "planetarium.showtheme",
+    "pk": 2,
+    "fields": {
+      "name": "Solar System Secrets",
+      "astronomy_shows": [2]
+    }
+  },
+  {
+    "model": "planetarium.showtheme",
+    "pk": 3,
+    "fields": {
+      "name": "Black Hole Mysteries",
+      "astronomy_shows": [3]
+    }
+  },
+  {
+    "model": "planetarium.showtheme",
+    "pk": 4,
+    "fields": {
+      "name": "Exoplanet Discoveries",
+      "astronomy_shows": [4]
+    }
+  },
+  {
+    "model": "planetarium.showtheme",
+    "pk": 5,
+    "fields": {
+      "name": "Cosmic Origins",
+      "astronomy_shows": [5]
+    }
+  },
+  {
+    "model": "planetarium.showtheme",
+    "pk": 6,
+    "fields": {
+      "name": "Stellar Evolution",
+      "astronomy_shows": [6]
+    }
+  },
+  {
+    "model": "planetarium.showtheme",
+    "pk": 7,
+    "fields": {
+      "name": "Alien Life Mysteries",
+      "astronomy_shows": [7]
+    }
+  },
+  {
+    "model": "planetarium.showtheme",
+    "pk": 8,
+    "fields": {
+      "name": "Cosmic Catastrophes",
+      "astronomy_shows": [8]
+    }
+  },
+  {
+    "model": "planetarium.showtheme",
+    "pk": 9,
+    "fields": {
+      "name": "Future of the Universe",
+      "astronomy_shows": [9]
+    }
+  },
+  {
+    "model": "planetarium.showtheme",
+    "pk": 10,
+    "fields": {
+      "name": "The Dark Side of Space",
+      "astronomy_shows": [10]
+    }
+  },
+  {
+    "model": "planetarium.planetariumdome",
+    "pk": 1,
+    "fields": {
+      "name": "Main Dome",
+      "rows": 10,
+      "seats_in_row": 15
+    }
+  },
+  {
+    "model": "planetarium.planetariumdome",
+    "pk": 2,
+    "fields": {
+      "name": "Small Dome",
+      "rows": 5,
+      "seats_in_row": 8
+    }
+  },
+  {
+    "model": "planetarium.planetariumdome",
+    "pk": 3,
+    "fields": {
+      "name": "Large Dome",
+      "rows": 15,
+      "seats_in_row": 20
+    }
+  },
+  {
+    "model": "planetarium.planetariumdome",
+    "pk": 4,
+    "fields": {
+      "name": "Theater Dome",
+      "rows": 20,
+      "seats_in_row": 25
+    }
+  },
+  {
+    "model": "planetarium.planetariumdome",
+    "pk": 5,
+    "fields": {
+      "name": "IMAX Dome",
+      "rows": 25,
+      "seats_in_row": 30
+    }
+  },
+  {
+    "model": "planetarium.planetariumdome",
+    "pk": 6,
+    "fields": {
+      "name": "Galaxy Dome",
+      "rows": 8,
+      "seats_in_row": 12
+    }
+  },
+  {
+    "model": "planetarium.planetariumdome",
+    "pk": 7,
+    "fields": {
+      "name": "Virtual Reality Dome",
+      "rows": 12,
+      "seats_in_row": 15
+    }
+  },
+  {
+    "model": "planetarium.planetariumdome",
+    "pk": 8,
+    "fields": {
+      "name": "Discovery Dome",
+      "rows": 6,
+      "seats_in_row": 10
+    }
+  },
+  {
+    "model": "planetarium.planetariumdome",
+    "pk": 9,
+    "fields": {
+      "name": "Nebula Dome",
+      "rows": 10,
+      "seats_in_row": 20
+    }
+  },
+  {
+    "model": "planetarium.planetariumdome",
+    "pk": 10,
+    "fields": {
+      "name": "Eclipse Dome",
+      "rows": 12,
+      "seats_in_row": 18
+    }
+  },
+  {
+    "model": "planetarium.showsession",
+    "pk": 1,
+    "fields": {
+      "astronomy_show": 1,
+      "planetarium_dome": 1,
+      "show_time": "2025-03-10T20:00:00Z"
+    }
+  },
+  {
+    "model": "planetarium.showsession",
+    "pk": 2,
+    "fields": {
+      "astronomy_show": 2,
+      "planetarium_dome": 2,
+      "show_time": "2025-03-11T18:30:00Z"
+    }
+  },
+  {
+    "model": "planetarium.showsession",
+    "pk": 3,
+    "fields": {
+      "astronomy_show": 3,
+      "planetarium_dome": 3,
+      "show_time": "2025-03-12T21:00:00Z"
+    }
+  },
+  {
+    "model": "planetarium.showsession",
+    "pk": 4,
+    "fields": {
+      "astronomy_show": 4,
+      "planetarium_dome": 4,
+      "show_time": "2025-03-13T17:45:00Z"
+    }
+  },
+  {
+    "model": "planetarium.showsession",
+    "pk": 5,
+    "fields": {
+      "astronomy_show": 5,
+      "planetarium_dome": 5,
+      "show_time": "2025-03-14T19:15:00Z"
+    }
+  },
+  {
+    "model": "planetarium.showsession",
+    "pk": 6,
+    "fields": {
+      "astronomy_show": 6,
+      "planetarium_dome": 6,
+      "show_time": "2025-03-15T20:30:00Z"
+    }
+  },
+  {
+    "model": "planetarium.showsession",
+    "pk": 7,
+    "fields": {
+      "astronomy_show": 7,
+      "planetarium_dome": 7,
+      "show_time": "2025-03-16T22:00:00Z"
+    }
+  },
+  {
+    "model": "planetarium.showsession",
+    "pk": 8,
+    "fields": {
+      "astronomy_show": 8,
+      "planetarium_dome": 8,
+      "show_time": "2025-03-17T18:30:00Z"
+    }
+  },
+  {
+    "model": "planetarium.showsession",
+    "pk": 9,
+    "fields": {
+      "astronomy_show": 9,
+      "planetarium_dome": 9,
+      "show_time": "2025-03-18T19:00:00Z"
+    }
+  },
+  {
+    "model": "planetarium.showsession",
+    "pk": 10,
+    "fields": {
+      "astronomy_show": 10,
+      "planetarium_dome": 10,
+      "show_time": "2025-03-19T20:30:00Z"
+    }
+  },
+  {
+    "model": "planetarium.reservation",
+    "pk": 1,
+    "fields": {
+      "created_at": "2025-02-23T12:30:00Z",
+      "user": 1
+    }
+  },
+  {
+    "model": "planetarium.reservation",
+    "pk": 2,
+    "fields": {
+      "created_at": "2025-02-23T13:00:00Z",
+      "user": 1
+    }
+  },
+  {
+    "model": "planetarium.reservation",
+    "pk": 3,
+    "fields": {
+      "created_at": "2025-02-23T13:30:00Z",
+      "user": 1
+    }
+  },
+  {
+    "model": "planetarium.reservation",
+    "pk": 4,
+    "fields": {
+      "created_at": "2025-02-23T14:00:00Z",
+      "user": 1
+    }
+  },
+  {
+    "model": "planetarium.reservation",
+    "pk": 5,
+    "fields": {
+      "created_at": "2025-02-23T14:30:00Z",
+      "user": 1
+    }
+  },
+  {
+    "model": "planetarium.reservation",
+    "pk": 6,
+    "fields": {
+      "created_at": "2025-02-23T15:00:00Z",
+      "user": 1
+    }
+  },
+  {
+    "model": "planetarium.reservation",
+    "pk": 7,
+    "fields": {
+      "created_at": "2025-02-23T15:30:00Z",
+      "user": 1
+    }
+  },
+  {
+    "model": "planetarium.reservation",
+    "pk": 8,
+    "fields": {
+      "created_at": "2025-02-23T16:00:00Z",
+      "user": 1
+    }
+  },
+  {
+    "model": "planetarium.reservation",
+    "pk": 9,
+    "fields": {
+      "created_at": "2025-02-23T16:30:00Z",
+      "user": 1
+    }
+  },
+  {
+    "model": "planetarium.reservation",
+    "pk": 10,
+    "fields": {
+      "created_at": "2025-02-23T17:00:00Z",
+      "user": 1
+    }
+  },
+  {
+    "model": "planetarium.ticket",
+    "pk": 1,
+    "fields": {
+      "row": 1,
+      "seat": 1,
+      "show_session": 1,
+      "reservation": 1
+    }
+  },
+  {
+    "model": "planetarium.ticket",
+    "pk": 2,
+    "fields": {
+      "row": 1,
+      "seat": 2,
+      "show_session": 2,
+      "reservation": 2
+    }
+  },
+  {
+    "model": "planetarium.ticket",
+    "pk": 3,
+    "fields": {
+      "row": 1,
+      "seat": 3,
+      "show_session": 3,
+      "reservation": 3
+    }
+  },
+  {
+    "model": "planetarium.ticket",
+    "pk": 4,
+    "fields": {
+      "row": 2,
+      "seat": 1,
+      "show_session": 4,
+      "reservation": 4
+    }
+  },
+  {
+    "model": "planetarium.ticket",
+    "pk": 5,
+    "fields": {
+      "row": 2,
+      "seat": 2,
+      "show_session": 5,
+      "reservation": 5
+    }
+  },
+  {
+    "model": "planetarium.ticket",
+    "pk": 6,
+    "fields": {
+      "row": 2,
+      "seat": 3,
+      "show_session": 6,
+      "reservation": 6
+    }
+  },
+  {
+    "model": "planetarium.ticket",
+    "pk": 7,
+    "fields": {
+      "row": 3,
+      "seat": 1,
+      "show_session": 7,
+      "reservation": 7
+    }
+  },
+  {
+    "model": "planetarium.ticket",
+    "pk": 8,
+    "fields": {
+      "row": 3,
+      "seat": 2,
+      "show_session": 8,
+      "reservation": 8
+    }
+  },
+  {
+    "model": "planetarium.ticket",
+    "pk": 9,
+    "fields": {
+      "row": 3,
+      "seat": 3,
+      "show_session": 9,
+      "reservation": 9
+    }
+  },
+  {
+    "model": "planetarium.ticket",
+    "pk": 10,
+    "fields": {
+      "row": 4,
+      "seat": 1,
+      "show_session": 10,
+      "reservation": 10
+    }
+  }
+]
