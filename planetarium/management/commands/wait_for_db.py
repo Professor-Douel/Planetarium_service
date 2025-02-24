@@ -1,33 +1,19 @@
-import os
-
 import time
-
-import django
 from django.db import connections
 from django.db.utils import OperationalError
+from django.core.management.base import BaseCommand
 
+class Command(BaseCommand):
+    help = 'Wait for the database to be available'
 
-os.environ.setdefault(
-    "DJANGO_SETTINGS_MODULE",
-    "Planetarium_service.settings"
-)
-django.setup()
-
-
-def wait_for_db():
-    print("Waiting for database...")
-    db_conn = None
-
-    while not db_conn:
-        try:
-            db_conn = connections["default"]
-            db_conn.cursor()
-            print("Database is available!")
-            break
-        except OperationalError:
-            print("Database is not ready, wait 5 seconds...")
-            time.sleep(5)
-
-
-if __name__ == "__main__":
-    wait_for_db()
+    def handle(self, *args, **options):
+        self.stdout.write('Waiting for database...')
+        db_conn = None
+        while not db_conn:
+            try:
+                db_conn = connections['default']
+                db_conn.cursor()
+            except OperationalError:
+                self.stdout.write('Database unavailable, waiting 3 second...')
+                time.sleep(3)
+        self.stdout.write(self.style.SUCCESS('Database available!'))
