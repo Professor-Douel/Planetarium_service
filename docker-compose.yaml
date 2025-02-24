@@ -1,3 +1,4 @@
+version: "3"
 services:
   planetarium:
     build:
@@ -7,6 +8,10 @@ services:
     environment:
       DJANGO_SUPERUSER_EMAIL: admin@example.com
       DJANGO_SUPERUSER_PASSWORD: 1qazcde3
+      EMAIL_HOST: mailhog
+      EMAIL_PORT: 1025
+      EMAIL_HOST_USER: imtence@gmail.com
+      EMAIL_HOST_PASSWORD: ngne dldy hhka yngo
     ports:
       - "8001:8000"
     command:
@@ -18,7 +23,7 @@ services:
             python manage.py runserver 0.0.0.0:8000"
     depends_on:
       - db
-
+      - mailhog
 
   db:
     image: postgres:16.0-alpine3.17
@@ -29,6 +34,13 @@ services:
       - "5432:5432"
     volumes:
       - my_db:$PGDATA
+
+  mailhog:
+    image: mailhog/mailhog
+    restart: always
+    ports:
+      - "8025:8025"
+      - "1025:1025"
 
 volumes:
   my_db:
