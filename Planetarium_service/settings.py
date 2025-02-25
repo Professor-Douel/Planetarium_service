@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 import os
+import sys
 from datetime import timedelta
 from pathlib import Path
 from dotenv import load_dotenv
@@ -47,7 +48,7 @@ INSTALLED_APPS = [
     "drf_spectacular",
     "django_extensions",
     "user",
-    "planetarium.apps.PlanetariumConfig"
+    "planetarium"
 ]
 
 MIDDLEWARE = [
@@ -96,7 +97,11 @@ DATABASES = {
         "PORT": os.environ["POSTGRES_PORT"],
     }
 }
-
+if 'test' in sys.argv:
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase'
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -184,9 +189,9 @@ SIMPLE_JWT = {
 AUTH_USER_MODEL = "user.User"
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "smtp.gmail.com"
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+EMAIL_HOST = "planetarium_mailhog"
+EMAIL_PORT = 1025
+EMAIL_USE_TLS = False
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
