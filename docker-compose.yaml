@@ -21,6 +21,8 @@ services:
             python manage.py createsuperuser --noinput || true &&
             python manage.py loaddata seed_data.json &&
             python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./:/app
     depends_on:
       - db
       - mailhog
@@ -37,6 +39,7 @@ services:
 
   mailhog:
     image: mailhog/mailhog
+    container_name: planetarium_mailhog
     restart: always
     ports:
       - "8025:8025"
