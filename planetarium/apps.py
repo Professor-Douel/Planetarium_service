@@ -6,4 +6,4 @@ class PlanetariumConfig(AppConfig):
     name = "planetarium"
 
     def ready(self):
-        import planetarium.signals
+        from . import signals
