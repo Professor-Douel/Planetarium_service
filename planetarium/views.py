@@ -1,11 +1,11 @@
 from rest_framework import (
     viewsets,
     filters,
-    permissions, serializers
+    permissions
 )
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
-from .models import (
+from planetarium.models import (
     AstronomyShow,
     ShowTheme,
     PlanetariumDome,
@@ -13,7 +13,7 @@ from .models import (
     Reservation
 )
 
-from .serializers import (
+from planetarium.serializers import (
     AstronomyShowSerializer,
     ShowThemeSerializer,
     PlanetariumDomeSerializer,
