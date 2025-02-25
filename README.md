@@ -72,8 +72,13 @@ header for subsequent requests.
 ### 📌 Example API request
 Getting a list of objects:
 ```sh
-GET http://localhost:8001/api/item/
+GET http://localhost:8001/api/planetarium/item/
 ```
+Create an order:
+```sh
+GET http://localhost:8001/api/planetarium/reservations/
+```
+
 ### Example MailHog request
 ```sh
 GET http://localhost:8025/
