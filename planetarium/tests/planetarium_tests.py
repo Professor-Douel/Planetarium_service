@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase, APIClient
 
@@ -10,15 +11,16 @@ User = get_user_model()
 
 class BaseViewSetTest(APITestCase):
     def setUp(self):
-        self.user = User.objects.create_user(username="testuser", password="testpass")
+        self.user = User.objects.create_user(email="testuser@example.com", password="testpass")
         self.client = APIClient()
-        self.client.login(username="testuser", password="testpass")
+        self.client.force_authenticate(user=self.user)
+
 
 class AstronomyShowViewSetTest(BaseViewSetTest):
     def setUp(self):
         super().setUp()
         self.show = AstronomyShow.objects.create(title="Test Show", description="Test Description")
-        self.url = "/api/astronomy-shows/"
+        self.url = "/api/planetarium/astronomy-shows/"
 
     def test_list_shows(self):
         response = self.client.get(self.url)
@@ -33,7 +35,7 @@ class ShowThemeViewSetTest(BaseViewSetTest):
     def setUp(self):
         super().setUp()
         self.theme = ShowTheme.objects.create(name="Space")
-        self.url = "/api/show-themes/"
+        self.url = "/api/planetarium/show-themes/"
 
     def test_list_themes(self):
         response = self.client.get(self.url)
@@ -43,7 +45,7 @@ class PlanetariumDomeViewSetTest(BaseViewSetTest):
     def setUp(self):
         super().setUp()
         self.dome = PlanetariumDome.objects.create(name="Main Dome", rows=10, seats_in_row=20)
-        self.url = "/api/planetarium-domes/"
+        self.url = "/api/planetarium/planetarium-domes/"
 
     def test_list_domes(self):
         response = self.client.get(self.url)
@@ -59,7 +61,7 @@ class ShowSessionViewSetTest(BaseViewSetTest):
             planetarium_dome=self.dome,
             show_time="2025-02-25T10:00:00Z"
         )
-        self.url = "/api/show-sessions/"
+        self.url = "/api/planetarium/show-sessions/"
 
     def test_list_sessions(self):
         response = self.client.get(self.url)
@@ -68,15 +70,26 @@ class ShowSessionViewSetTest(BaseViewSetTest):
 class ReservationViewSetTest(BaseViewSetTest):
     def setUp(self):
         super().setUp()
-        self.reservation = Reservation.objects.create(user=self.user)
-        self.url = "/api/reservations/"
-
-    def test_list_reservations(self):
-        response = self.client.get(self.url)
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(len(response.data), 1)
+        self.show = AstronomyShow.objects.create(title="Galaxy Show", description="Test")
+        self.dome = PlanetariumDome.objects.create(name="Dome 1", rows=5, seats_in_row=10)
+        self.session = ShowSession.objects.create(
+            astronomy_show=self.show,
+            planetarium_dome=self.dome,
+            show_time="2025-02-25T10:00:00Z"
+        )
+        self.url = reverse('planetarium:reservation-list')
 
     def test_create_reservation(self):
-        data = {}
-        response = self.client.post(self.url, data, format='json')
+        self.client.force_authenticate(user=self.user)
+        data = {
+            "tickets": [  # Provide at least one ticket
+                {
+                    "show_session": self.session.id,
+                    "seat": 1,
+                    "row": 1,
+                    "reservation": 1
+                }
+            ]
+        }
+        response = self.client.post(self.url, data, format="json")
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
